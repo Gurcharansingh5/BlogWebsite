@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form action="{% url 'blogupdate' id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+  <label>Add New title</label>
+  <input type="text" class="form-control" name="title" value="{{updateblog.title}}" required>
+
+  <label>Description:</label>
+  <textarea class="form-control" rows="5" id="comment" name="description" required>{{updateblog.description}}</textarea>
+</div>
+
+<button type="submit" class="btn btn-info">submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<bold>ID - </bold> {{user.id}} <bold>Name :  </bold> {{user.username}}
+<br>
+<div class="table-responsive">
+    <table class="datatable table table-hover table-center mb-0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>created By</th>
+        <th>no_of_views</th>
+
+        <th>action</th>
+
+    </tr>
+    </thead>
+{% for i in allblogs %}
+        <tbody>
+        <tr>
+            <td>{{i.id}}</td>
+            <td><a href="{% url 'readblog' i.id %}">{{i.title}}</a></td>
+            <td>{{i.description}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.blodid}}</td>
+            <td>{{i.post_views}}</td>
+
+            {% if user.id == i.blodid.id %}
+            <td><a href="{% url 'blogdelete' i.id %}"><button class="btn btn-info">delete</button></a></td>
+            <td><a href="{% url 'blogupdate' i.id %}"><button class="btn btn-primary">Update</button></a></td>
+            {% endif %}
+
+        </tr>
+        </tbody>
+{% endfor %}
+        </table>
+</div>
+<br>
+{% if user.id == Null %}
+<a href="{% url 'login' %}"><button class="btn btn-info">login</button></a>
+<a href="{% url 'register' %}"><button class="btn btn-danger">signup</button></a>
+{% endif %}
+{% if user.id  != Null %}
+<a href="{% url 'createblog' %}"><button class="btn btn-info">create blog</button></a>
+<a href="{% url 'bloglogout' %}"><button class="btn btn-danger">logout</button></a>
+
+{% endif %}
+<br>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete</title>
+</head>
+<body>
+
+<p>are you sure want to delete !!</p>
+<form action="{% url 'blogdelete' id %}" method="post">
+    {% csrf_token %}
+
+<button type="submit">DElete</button>
+    </form>
+<a href="{% url 'blogindex' %}"><button class="btn btn-danger">NO</button></a>
+</body>
+</html>

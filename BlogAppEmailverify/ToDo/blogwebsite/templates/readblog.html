@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ <h3></h3>
+<p class="lead"></p>
+<h3>
+    {{blogread.title}}
+    <br>
+  <small class="text-muted">{{blogread.description}}</small>
+</h3>
+<a href="{% url 'blogindex'  %}"><button class="btn btn-info">Back</button></a>
+{% if user.is_active %}
+<a href="{% url 'commentonblog' id %}"><button class="btn btn-info">comment</button></a>
+{% endif %}
+
+<div class="table-responsive">
+    <table class="datatable table table-hover table-center mb-0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Comments</th>
+        <th>Date</th>
+        <th>Given By</th>
+
+    </tr>
+    </thead>
+{% for i in  blogcomments %}
+        <tbody>
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.commentonblog}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.commentatorname.username}}</td>
+        </tr>
+        </tbody>
+{% endfor %}
+        </table>
+</div>
+{% endblock %}

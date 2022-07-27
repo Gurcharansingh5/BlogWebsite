@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<p>write your comment </p>
+<form action="{% url 'commentonblog' id %}" method="post">
+    {% csrf_token %}
+ <textarea class="form-control" rows="5" id="comment" name="comment" required></textarea>
+    <button type="submit" class="btn btn-info">submit</button>
+</form>
+{% endblock %}

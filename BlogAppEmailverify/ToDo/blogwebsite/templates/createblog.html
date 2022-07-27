@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form action="{% url 'createblog' %}" method="post">
+    {% csrf_token %}
+enter title: <input type="text" name="title" class="form-control" required>
+    enter description :   <textarea name="description" class="form-control" rows="5" required></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary">submit</button>
+
+
+</form>
+{% endblock %}
